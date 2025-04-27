@@ -9,6 +9,12 @@
     ],
     "service_worker": "serviceWorker-full.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"]
+    }
+  ],
   "browser_specific_settings": {
     "gecko": {
       "id": "Omnibug@rosssimpson.com",

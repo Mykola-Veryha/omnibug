@@ -24,6 +24,15 @@
                 });
 
                 port.onMessage.addListener((msg) => {
+                    chrome.tabs.query({}, function(tabs) {
+                        for (let tab of tabs) {
+                            chrome.tabs.sendMessage(
+                                tab.id,
+                                { action: "logToConsole", message: msg },
+                            );
+                        }
+                    });
+
                     if (panelWindow) {
                         panelWindow.Omnibug.receive_message(msg);
                     } else {

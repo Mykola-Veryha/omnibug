@@ -2,7 +2,7 @@
 const sass = require("sass");
 
 module.exports = function (grunt) {
-    
+
     grunt.config.init({
         "extension": {
             "production": {
@@ -189,7 +189,7 @@ module.exports = function (grunt) {
     grunt.registerTask("build-copy", "Copy over the source files to the build directory", function (browser) {
         grunt.config.requires(browser);
         let options = grunt.config(browser),
-            filesToCopy = ["serviceWorker-full.js", "providers.js", "options/*.*", "devtools/*.*", "assets/**", "libs/*.*", "!libs/OmnibugTracker.*", "popup/*.*", "pages/**", "!**/*.scss", "!assets/styles/**"],
+            filesToCopy = ["serviceWorker-full.js", "content-script.js", "providers.js", "options/*.*", "devtools/*.*", "assets/**", "libs/*.*", "!libs/OmnibugTracker.*", "popup/*.*", "pages/**", "!**/*.scss", "!assets/styles/**"],
             trackingLib = {
                 expand: true,
                 cwd: "src/libs/",
@@ -353,7 +353,7 @@ module.exports = function (grunt) {
          * Splitting providers into 2 sections because:
          * 1) we should individually test each provider to verify it's returning the right data
          * 2) we still need to test the regex patterns to make sure that another provider isn't being greedy and matching what a different provider should
-         * 
+         *
          * providers-test-individual sets up each provider with import/export under the /test/source/providers dir
          *
          * providers-test will setup the providers.js with all providers added to the OmnibugProvider object, and exports the OmnibugProvider
